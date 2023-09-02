@@ -27,4 +27,19 @@ public class App
 
 
     }
+
+    /**
+     * Método que verificará si la cantidad de elementos en el ArrayList es menor de 6
+     * para permitir que se puedan agregar más elementos, de no ser así no se podrá
+     * agregar más elementos al ArrayList que representa el limite arbitrario definido.
+     * @param lista
+     * @return
+     */
+    public static boolean validarNumeroElemento(List<Objeto> lista){
+        if(lista.size() < 7){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
