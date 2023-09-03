@@ -27,7 +27,7 @@ public class App
     {
         int inicial = 0;
         int sumaValorElementos = 0;
-        int[] elementos = {0, 0, 0, 0, 0, 0};
+        int[] elementos = {0, 0, 0, 0, 0, 0, 0, 0};
         int[] elementosGuardados = crearListaElementos(elementos, 0, 0);
         imprimirRecursivo(elementosGuardados, inicial, elementosGuardados.length-1);
         float sumaValoresLista = sumarValoresObjetos(elementosGuardados, 0,sumaValorElementos);
