@@ -6,6 +6,10 @@ public class Objeto {
 
     private float pesoObjecto;
 
+    public Objeto(){
+
+    }
+
     public Objeto(float valorObjecto, float pesoObjecto) {
         this.valorObjecto = valorObjecto;
         this.pesoObjecto = pesoObjecto;
