@@ -3,9 +3,6 @@ package main;
 import models.Elemento;
 import models.Mochila;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class App {
     public static void main(String[] args) {
 
@@ -58,7 +55,6 @@ public class App {
             //Recorre los elementos
             for (int i = 0; i < elementos.length; i++) {
                 String aux = m_base.existeElemento(elementos[i])==true? " ya existe ":" no existe";
-                //System.out.println(ident+"Validando i="+i+" elemento + "+elementos[i].toString()+aux);
                 //si existe el elemento
                 if (!m_base.existeElemento(elementos[i])) {
                     //Si el peso de la mochila se supera, indicamos que esta llena
