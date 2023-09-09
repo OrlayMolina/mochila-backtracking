@@ -1,23 +1,20 @@
 package models;
 
-import java.util.List;
-
 public class Mochila {
-
     private int pesoMaximo;
-    private Objeto[] elementos;
+    private Elemento[] elementos;
 
     private int peso;
     private int beneficio;
 
     public Mochila(int pesoMaximo, int numElementos) {
         this.pesoMaximo = pesoMaximo;
-        this.elementos = new Objeto[numElementos];
+        this.elementos = new Elemento[numElementos];
         this.beneficio = 0;
         this.peso = 0;
     }
 
-    public Objeto[] getElementos() {
+    public Elemento[] getElementos() {
         return elementos;
     }
 
@@ -49,13 +46,13 @@ public class Mochila {
      * Añade un elemento a la mochila
      * @param e
      */
-    public void aniadirElemento(Objeto e) {
+    public void aniadirElemento(Elemento e) {
 
         for (int i = 0; i < this.elementos.length; i++) {
             if (this.elementos[i] == null) {
                 this.elementos[i] = e; //lo añade
-                this.beneficio+=e.getValorObjecto(); // aumenta el beneficio
-                this.peso+=e.getPesoObjecto(); // Aumenta el piso
+                this.beneficio+=e.getBeneficio(); // aumenta el beneficio
+                this.peso+=e.getPeso(); // Aumenta el piso
                 break;
             }
         }
@@ -77,12 +74,12 @@ public class Mochila {
      * Elimina elemento dado
      * @param e
      */
-    public void eliminarElemento(Objeto e) {
+    public void eliminarElemento(Elemento e) {
         for (int i = 0; i < this.elementos.length; i++) {
             if (this.elementos[i].equals(e)) {
                 this.elementos[i] = null; //el elemento fuera
-                this.peso-=e.getPesoObjecto(); //Reduce el peso
-                this.beneficio-=e.getValorObjecto(); // reduce el beneficio
+                this.peso-=e.getPeso(); //Reduce el peso
+                this.beneficio-=e.getBeneficio(); // reduce el beneficio
                 break;
             }
         }
@@ -93,7 +90,7 @@ public class Mochila {
      * @param e
      * @return
      */
-    public boolean existeElemento(Objeto e) {
+    public boolean existeElemento(Elemento e) {
         for (int i = 0; i < this.elementos.length; i++) {
             if (this.elementos[i] != null && this.elementos[i].equals(e)) {
                 return true;
@@ -118,4 +115,5 @@ public class Mochila {
         cadena+="Beneficio: " + getBeneficio()+"\n";
         return cadena;
     }
+
 }
