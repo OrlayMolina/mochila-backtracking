@@ -2,32 +2,42 @@ package models;
 
 public class Objeto {
 
-    private float valorObjecto;
+    private String nombre;
+    private float valorObjeto;
 
-    private float pesoObjecto;
+    private float pesoObjeto;
 
     public Objeto(){
 
     }
 
-    public Objeto(float valorObjecto, float pesoObjecto) {
-        this.valorObjecto = valorObjecto;
-        this.pesoObjecto = pesoObjecto;
+    public Objeto(String nombre, float valorObjecto, float pesoObjecto) {
+        this.nombre = nombre;
+        this.valorObjeto = valorObjecto;
+        this.pesoObjeto = pesoObjecto;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public float getValorObjecto() {
-        return valorObjecto;
+        return valorObjeto;
     }
 
     public void setValorObjecto(float valorObjecto) {
-        this.valorObjecto = valorObjecto;
+        this.valorObjeto = valorObjecto;
     }
 
     public float getPesoObjecto() {
-        return pesoObjecto;
+        return pesoObjeto;
     }
 
     public void setPesoObjecto(float pesoObjecto) {
-        this.pesoObjecto = pesoObjecto;
+        this.pesoObjeto = pesoObjecto;
     }
 }

@@ -11,28 +11,19 @@ import java.util.List;
  */
 public class App 
 {
-
-    static Calculadora calculadora = new Calculadora(45000F, 2.5F);
-    static Cartuchera cartuchera = new Cartuchera(10000F, 1.8F);
-    static Cuaderno cuaderno = new Cuaderno(19500F, 3.8F);
-    static Juguete juguete = new Juguete(35000F, 5.2F);
-    static Libro libro = new Libro(15000F, 2.8F);
-    static Lonchera lonchera = new Lonchera(6000F, 4.6F);
-    static Regla regla = new Regla(2700F, 0.8F);
-    static Sombrilla sombrilla = new Sombrilla(12000F, 1.3F);
-    static List<Objeto> lista = new ArrayList<>();
-    static Mochila mochila = new Mochila(15.0F, lista); // peso dado en Kilogramos
-
     public static void main( String[] args )
     {
-        int inicial = 0;
-        int sumaValorElementos = 0;
-        int[] elementos = {0, 0, 0, 0, 0, 0, 0, 0};
-        int[] elementosGuardados = crearListaElementos(elementos, 0, 0);
-        imprimirRecursivo(elementosGuardados, inicial, elementosGuardados.length-1);
-        float sumaValoresLista = sumarValoresObjetos(elementosGuardados, 0,sumaValorElementos);
-        System.out.println("\nEl valor total de los elementos contenidos en la mochila es de $: " + sumaValoresLista);
+        Objeto[] elementos = {
+                new Objeto("Calculadora", 12000F, 0.9F ),
+                new Objeto("Cartuchera", 8000F, 1.6F ),
+                new Objeto("Cuaderno", 9000F, 1.8F ),
+                new Objeto("Juguete", 15000F, 3.5F ),
+                new Objeto("Libro", 15000F, 2.5F ),
+                new Objeto("Lonchera", 12000F, 5.9F ),
+                new Objeto("Regla", 5000F, 0.6F ),
+                new Objeto("Sombrilla", 13000F, 2.3F ),
 
+        };
     }
 
 
@@ -43,16 +34,24 @@ public class App
      * @param indice
      * @return
      */
-    public static int[] crearListaElementos(int[] elementos, int indice, float peso){
+    public static int[] crearListaElementos(int[] elementos, int indice, float peso, int[] actual, int[] mejor, float mayorValor){
         if(indice > elementos.length-1){
             return elementos;
         }else {
             float pesos = sumarPesos(indice, peso);
             if(elementos[indice] == 0 &&  pesos < mochila.getCapacidad()){
+
                 elementos[indice] = 1;
-                return crearListaElementos(elementos, ++indice, pesos);
+                float valor = sumarValoresObjetos(elementos,0,0);
+                if(valor > mayorValor){
+                    return crearListaElementos(elementos, ++indice, pesos, elementos, elementos, valor);
+                }else{
+                    return crearListaElementos(elementos, ++indice, pesos, elementos, mejor, mayorValor);
+                }
+
+                //return crearListaElementos(elementos, ++indice, pesos, );
             }else {
-                return crearListaElementos(elementos, ++indice, pesos);
+                return crearListaElementos(elementos, ++indice, pesos, elementos, mejor, mayorValor);
             }
         }
     }
@@ -65,7 +64,7 @@ public class App
      * @param suma
      * @return
      */
-    public static float sumarPesos(int indice, float suma){
+    /*public static float sumarPesos(int indice, float suma){
         switch(indice){
             case 0:
                 suma += calculadora.getPesoObjecto();
@@ -95,7 +94,7 @@ public class App
                 return suma;
         }
         return suma;
-    }
+    }*/
 
     /**
      * Método auxiliar que toma los precios de los elementos agregados a la mochila, acumulandolos
@@ -106,7 +105,7 @@ public class App
      * @param suma
      * @return
      */
-    public static float sumarValoresObjetos(int[] array, int indice, float suma){
+    /*public static float sumarValoresObjetos(int[] array, int indice, float suma){
         if(indice > array.length-1){
             return suma;
         }else{
@@ -142,7 +141,7 @@ public class App
             }
         }
         return suma;
-    }
+    }*/
 
     /**
      * Método recursivo que imprime los elementos dentro de un array.
